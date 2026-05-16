@@ -49,7 +49,7 @@ const I18N = {
       enhanceOn: "Sharpen on",
       canvas:
         "Pan the map by dragging. Scroll or use buttons to zoom.",
-      hint: "Scroll to zoom · Drag to pan · Click Load HD for sharper detail · Double-click to reset",
+      hint: "Pinch to zoom · Drag to pan · Load HD for sharper detail · Double-tap to reset",
       captionStrong: "Figure 1.",
       caption: "Black Hole Cosmology — An Explanatory Map.",
       captionSub:
@@ -199,7 +199,7 @@ const I18N = {
       enhance: "銳化",
       enhanceOn: "銳化已開",
       canvas: "拖曳平移地圖。滾動或使用按鈕縮放。",
-      hint: "滾動縮放 · 拖曳平移 · 點擊「載入高清」獲得更清晰圖像 · 雙擊重設",
+      hint: "雙指縮放 · 拖曳平移 · 點擊「載入高清」獲得更清晰圖像 · 雙擊重設",
       captionStrong: "圖 1.",
       caption: "黑洞宇宙學 — 解說概念圖。",
       captionSub:

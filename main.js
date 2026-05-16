@@ -136,6 +136,15 @@ function renderMath() {
   }
 }
 
+function setMenuOpen(open) {
+  const menuBtn = document.querySelector(".menu-btn");
+  const nav = document.querySelector(".site-nav");
+  if (!menuBtn || !nav) return;
+  menuBtn.setAttribute("aria-expanded", String(open));
+  nav.classList.toggle("open", open);
+  document.body.classList.toggle("menu-open", open);
+}
+
 function initNav() {
   const menuBtn = document.querySelector(".menu-btn");
   const nav = document.querySelector(".site-nav");
@@ -143,15 +152,19 @@ function initNav() {
 
   menuBtn.addEventListener("click", () => {
     const open = menuBtn.getAttribute("aria-expanded") === "true";
-    menuBtn.setAttribute("aria-expanded", String(!open));
-    nav.classList.toggle("open", !open);
+    setMenuOpen(!open);
   });
 
   links.forEach((link) => {
-    link.addEventListener("click", () => {
-      menuBtn.setAttribute("aria-expanded", "false");
-      nav.classList.remove("open");
-    });
+    link.addEventListener("click", () => setMenuOpen(false));
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") setMenuOpen(false);
+  });
+
+  window.addEventListener("resize", () => {
+    if (window.innerWidth > 768) setMenuOpen(false);
   });
 
   const sections = document.querySelectorAll("section[id], .hero[id]");
@@ -426,15 +439,19 @@ function initMapViewer() {
     { passive: false }
   );
 
-  const ro = new ResizeObserver(() => {
+  const onViewportChange = () => {
     if (imgW && imgH) {
       clampPan();
       applyTransform();
     } else {
       fitToView();
     }
-  });
+  };
+
+  const ro = new ResizeObserver(onViewportChange);
   ro.observe(canvas);
+  window.addEventListener("resize", onViewportChange);
+  window.visualViewport?.addEventListener("resize", onViewportChange);
 
   bindImage();
 
