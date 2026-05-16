@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Black Hole Cosmology — derivation of universe genesis from spacetime waterfall geometry, Schwarzschild–Hubble equivalence, and quantum bounce." id="meta-desc" />
+  <title id="doc-title">Black Hole Cosmology — Universe Genesis</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700&family=Source+Sans+3:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main" data-i18n="skip">Skip to content</a>
+
+  <header class="site-header" id="nav">
+    <div class="header-inner">
+      <a class="brand" href="#top">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span class="brand-text">
+          <span class="brand-title" data-i18n="brand.title">Black Hole Cosmology</span>
+          <span class="brand-sub" data-i18n="brand.sub">Universe Genesis · Draft 2026</span>
+        </span>
+      </a>
+      <nav class="site-nav" aria-label="Primary" data-i18n-aria="nav.label">
+        <ul>
+          <li><a href="#map" data-i18n="nav.map">Conceptual Map</a></li>
+          <li><a href="#waterfall" data-i18n="nav.waterfall">1. Waterfall</a></li>
+          <li><a href="#schwarzschild" data-i18n="nav.schwarzschild">2. Equivalence</a></li>
+          <li><a href="#bounce" data-i18n="nav.bounce">3. Bounce</a></li>
+          <li><a href="#paper" class="nav-paper" data-i18n="nav.paper">Full Paper</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <div class="lang-switch" role="group" aria-label="Language" data-i18n-aria="lang.toggle">
+          <button type="button" class="lang-btn is-active" data-lang="en" aria-pressed="true">EN</button>
+          <button type="button" class="lang-btn" data-lang="zh" aria-pressed="false">中文</button>
+        </div>
+        <button class="menu-btn" data-i18n-aria="nav.menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="hero-inner reveal">
+        <p class="kicker" data-i18n="hero.kicker">Theoretical Physics &amp; Cosmology</p>
+        <h1 data-i18n="hero.title">Derivation of Black Hole Universe Genesis</h1>
+        <p class="hero-subtitle" data-i18n="hero.subtitle">
+          Based on the Spacetime Waterfall Model and Schwarzschild Geometry
+        </p>
+        <blockquote class="hero-thesis">
+          <p data-i18n="hero.thesis">Our visible universe is the interior of a black hole.</p>
+          <cite>$$r_s = \dfrac{c}{H_0} = R_U$$</cite>
+        </blockquote>
+        <div class="hero-actions">
+          <a href="#map" class="btn btn-primary" data-i18n="hero.ctaMap">View conceptual map</a>
+          <a href="assets/paper.pdf" class="btn btn-secondary" target="_blank" rel="noopener" data-i18n="hero.ctaPaper">Read full paper (PDF)</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel abstract" id="abstract">
+      <div class="container reveal">
+        <header class="panel-header">
+          <span class="panel-num" data-i18n="abstract.num">Abstract</span>
+          <h2 data-i18n="abstract.title">Summary</h2>
+        </header>
+        <div class="prose">
+          <p data-i18n-html="abstract.body"></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel map-panel" id="map">
+      <div class="container container--wide reveal">
+        <header class="panel-header">
+          <span class="panel-num" data-i18n="map.num">Figure 1</span>
+          <h2 data-i18n="map.title">Explanatory Conceptual Map</h2>
+          <p class="panel-lead" data-i18n="map.lead"></p>
+        </header>
+
+        <div class="map-viewer" id="map-viewer">
+          <div class="map-toolbar" role="toolbar" data-i18n-aria="map.toolbar">
+            <button type="button" class="map-btn" data-zoom="out" data-i18n-aria="map.zoomOut">−</button>
+            <span class="map-zoom-level" id="zoom-level" aria-live="polite">100%</span>
+            <button type="button" class="map-btn" data-zoom="in" data-i18n-aria="map.zoomIn">+</button>
+            <span class="map-toolbar-divider" aria-hidden="true"></span>
+            <button type="button" class="map-btn map-btn--text" data-zoom="fit" data-i18n="map.fit">Fit</button>
+            <button type="button" class="map-btn map-btn--text" data-zoom="reset" data-i18n="map.reset">Reset</button>
+            <button type="button" class="map-btn map-btn--text" data-action="hd" id="hd-btn" data-i18n="map.hd">HD</button>
+            <button type="button" class="map-btn map-btn--text" data-action="enhance" id="enhance-btn" data-i18n="map.enhance">Sharpen</button>
+            <button type="button" class="map-btn map-btn--text" data-action="fullscreen" data-i18n="map.fullscreen">Fullscreen</button>
+          </div>
+          <div class="map-canvas" id="map-canvas" tabindex="0" data-i18n-aria="map.canvas">
+            <div class="map-stage" id="map-stage">
+              <img
+                id="map-image"
+                src="assets/explanatory-map.png"
+                width="1024"
+                height="558"
+                data-i18n-alt="map.alt"
+                alt=""
+                decoding="async"
+                draggable="false"
+              />
+            </div>
+          </div>
+          <p class="map-hint" data-i18n="map.hint"></p>
+        </div>
+
+        <figcaption class="figure-caption">
+          <strong data-i18n="map.captionStrong">Figure 1.</strong>
+          <span data-i18n="map.caption"> Black Hole Cosmology — An Explanatory Map.</span>
+          <span class="caption-sub" data-i18n="map.captionSub"></span>
+        </figcaption>
+
+        <div class="map-legend">
+          <h3 class="legend-title" data-i18n="map.legendTitle">Map regions</h3>
+          <ol class="legend-grid" id="legend-grid"></ol>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel" id="waterfall">
+      <div class="container reveal">
+        <header class="panel-header">
+          <span class="panel-num" data-i18n="waterfall.num">Section 1</span>
+          <h2 data-i18n="waterfall.title">The Spacetime Waterfall Model</h2>
+          <p class="panel-lead" data-i18n="waterfall.lead"></p>
+        </header>
+
+        <div class="content-grid content-grid--2">
+          <article class="content-block">
+            <h3 data-i18n="waterfall.interp">Physical interpretation</h3>
+            <div class="prose">
+              <p data-i18n-html="waterfall.interpBody"></p>
+              <p class="note-zh" lang="zh" data-i18n="waterfall.noteZh"></p>
+            </div>
+          </article>
+          <article class="content-block content-block--eq">
+            <h3 data-i18n="waterfall.eqTitle">Key equations</h3>
+            <div class="eq-card">
+              <span class="eq-title" data-i18n="waterfall.lineElement">Line element (GP coordinates)</span>
+              $$ds^2 = -c^2\,dt_{\mathrm{gp}}^2 + \left(dr + \sqrt{\frac{2GM}{r}}\,dt_{\mathrm{gp}}\right)^2 + r^2\,d\Omega^2$$
+            </div>
+            <div class="eq-card">
+              <span class="eq-title" data-i18n="waterfall.radialVel">Radial flow velocity</span>
+              $$v_r = -\sqrt{\frac{2GM}{r}}$$
+            </div>
+          </article>
+        </div>
+
+        <div class="comparison-table">
+          <div class="comparison-col">
+            <h4 data-i18n="waterfall.atHorizon">At event horizon ($r = r_s$)</h4>
+            <p class="comparison-condition">$r_s = \dfrac{2GM}{c^2}$</p>
+            $$|v_r| = \sqrt{\frac{2GM}{r_s}} = c$$
+          </div>
+          <div class="comparison-col comparison-col--emphasis">
+            <h4 data-i18n="waterfall.insideHorizon">Inside horizon ($r &lt; r_s$)</h4>
+            <p class="comparison-condition" data-i18n="waterfall.denom">Denominator decreases</p>
+            $$|v_r| &gt; c$$
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel panel--alt" id="internal">
+      <div class="container reveal">
+        <header class="panel-header">
+          <span class="panel-num" data-i18n="internal.num">Internal model</span>
+          <h2 data-i18n="internal.title">Universe Inside the Black Hole</h2>
+        </header>
+        <ul class="key-points" id="internal-points"></ul>
+      </div>
+    </section>
+
+    <section class="panel" id="schwarzschild">
+      <div class="container reveal">
+        <header class="panel-header">
+          <span class="panel-num" data-i18n="schwarzschild.num">Section 2</span>
+          <h2 data-i18n="schwarzschild.title">Schwarzschild Cosmology</h2>
+          <p class="panel-lead" data-i18n="schwarzschild.lead"></p>
+        </header>
+
+        <div class="derivation-chain">
+          <div class="derivation-item">
+            <span class="step-label" data-i18n="schwarzschild.step1">Step 1</span>
+            <h4 data-i18n="schwarzschild.critical">Critical density</h4>
+            $$\rho_c = \frac{3H_0^2}{8\pi G}$$
+          </div>
+          <div class="derivation-arrow" aria-hidden="true">→</div>
+          <div class="derivation-item">
+            <span class="step-label" data-i18n="schwarzschild.step2">Step 2</span>
+            <h4 data-i18n="schwarzschild.hubble">Hubble radius</h4>
+            $$R_U = \frac{c}{H_0}$$
+          </div>
+          <div class="derivation-arrow" aria-hidden="true">→</div>
+          <div class="derivation-item">
+            <span class="step-label" data-i18n="schwarzschild.step3">Step 3</span>
+            <h4 data-i18n="schwarzschild.mass">Universe mass</h4>
+            $$M_U = \frac{4}{3}\pi R_U^3\,\rho_c$$
+          </div>
+        </div>
+
+        <div class="eq-card eq-card--highlight">
+          <span class="eq-title" data-i18n="schwarzschild.rsTitle">Schwarzschild radius of observable universe mass</span>
+          $$r_s = \frac{2G M_U}{c^2} = \frac{2G}{c^2}\cdot\frac{4\pi c^3}{3H_0^3}\cdot\frac{3H_0^2}{8\pi G} = \frac{c}{H_0} = R_U$$
+        </div>
+
+        <aside class="result-box">
+          <p class="result-label" data-i18n="schwarzschild.result">Result</p>
+          <p class="result-eq">$$r_s = R_U$$</p>
+          <p class="result-text" data-i18n="schwarzschild.resultText"></p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="panel panel--alt" id="bounce">
+      <div class="container reveal">
+        <header class="panel-header">
+          <span class="panel-num" data-i18n="bounce.num">Section 3</span>
+          <h2 data-i18n="bounce.title">Quantum Bounce and Infinite Expansion</h2>
+          <p class="panel-lead" data-i18n="bounce.lead"></p>
+        </header>
+
+        <div class="process-flow">
+          <div class="process-step">
+            <span class="process-num">1</span>
+            <h4 data-i18n="bounce.collapse">Collapse</h4>
+            <p data-i18n="bounce.collapseText"></p>
+          </div>
+          <div class="process-step process-step--active">
+            <span class="process-num">2</span>
+            <h4 data-i18n="bounce.torsion">Spin torsion</h4>
+            <p data-i18n="bounce.torsionText"></p>
+          </div>
+          <div class="process-step">
+            <span class="process-num">3</span>
+            <h4 data-i18n="bounce.baby">Baby universe</h4>
+            <p data-i18n="bounce.babyText"></p>
+          </div>
+        </div>
+
+        <div class="eq-card">
+          <span class="eq-title" data-i18n="bounce.friedmann">Modified Friedmann equation (Einstein–Cartan)</span>
+          $$H^2 = \frac{8\pi G}{3}\left(\rho - \frac{\rho^2}{\rho_{\mathrm{crit}}}\right)$$
+          <p class="eq-footnote" data-i18n="bounce.footnote"></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel conclusion-panel" id="conclusion">
+      <div class="container reveal">
+        <blockquote class="final-thesis">
+          <p class="final-eq">$$r_s = \frac{c}{H_0} = R_U$$</p>
+          <p data-i18n="conclusion.text">Our visible universe is the interior of a black hole.</p>
+        </blockquote>
+      </div>
+    </section>
+
+    <section class="panel paper-panel" id="paper">
+      <div class="container reveal">
+        <div class="paper-card">
+          <div>
+            <span class="panel-num" data-i18n="paper.num">Publication</span>
+            <h2 data-i18n="paper.title">Derivation of Black Hole Universe Genesis</h2>
+            <p class="paper-desc" data-i18n="paper.desc"></p>
+          </div>
+          <div class="paper-actions">
+            <a href="assets/paper.pdf" class="btn btn-primary" target="_blank" rel="noopener" data-i18n="paper.open">Open PDF</a>
+            <a href="assets/paper.pdf" class="btn btn-secondary" download data-i18n="paper.download">Download</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p data-i18n="footer"></p>
+    </div>
+  </footer>
+
+  <dialog class="lightbox" id="lightbox" data-i18n-aria="map.fullscreen">
+    <div class="lightbox-header">
+      <span data-i18n="map.lightboxTitle">Explanatory Map — Full View</span>
+      <button type="button" class="lightbox-close" data-i18n-aria="map.lightboxClose">×</button>
+    </div>
+    <div class="lightbox-body" id="lightbox-body">
+      <img
+        id="lightbox-image"
+        src="assets/explanatory-map.png"
+        width="1024"
+        height="558"
+        data-i18n-alt="map.lightboxAlt"
+        alt=""
+        decoding="async"
+      />
+    </div>
+  </dialog>
+
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="i18n.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
